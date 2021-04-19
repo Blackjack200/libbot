@@ -4,7 +4,9 @@
 namespace libbot;
 
 
-class ManagedThread extends \Thread {
+use pocketmine\Thread;
+
+class ManagedThread extends Thread {
 	private bool $running = false;
 
 	public function start(int $options = PTHREADS_INHERIT_ALL) : void {
