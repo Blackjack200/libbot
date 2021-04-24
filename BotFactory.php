@@ -5,6 +5,7 @@ namespace libbot;
 
 
 use libbot\discord\DiscordBot;
+use libbot\onebot\OneBot;
 
 final class BotFactory {
 	private static array $ls = [];
@@ -25,6 +26,7 @@ final class BotFactory {
 		if (!self::$init) {
 			self::$init = true;
 			self::register('discord', DiscordBot::class);
+			self::register('onebot', OneBot::class);
 		}
 	}
 
