@@ -10,11 +10,18 @@ use libbot\Message;
 
 class OneBot implements Bot {
 	private string $url;
+	private int $group;
 	private OneBotThread $thread;
+	private OneBotMessage $cache;
 
 	public function __construct(BotInfo $info) {
 		$this->url = $info->url;
+		$this->group = $info->group;
 		$this->thread = new OneBotThread($this->url);
+
+		$this->cache = new OneBotMessage();
+		$this->cache->escape(false);
+		$this->cache->group($this->group);
 	}
 
 	public function start() : void {
@@ -27,5 +34,9 @@ class OneBot implements Bot {
 
 	public function send(Message $message) : void {
 		$this->thread->submit($message);
+	}
+
+	public function newMessage() : Message {
+		return clone $this->cache;
 	}
 }

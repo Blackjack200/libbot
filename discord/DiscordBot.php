@@ -28,4 +28,8 @@ class DiscordBot implements Bot {
 	public function send(Message $message) : void {
 		$this->thread->submit($message);
 	}
+
+	public function newMessage() : Message {
+		return new DiscordMessage();
+	}
 }

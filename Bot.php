@@ -12,4 +12,6 @@ interface Bot {
 	public function shutdown() : void;
 
 	public function send(Message $message) : void;
+
+	public function newMessage() : Message;
 }
